@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load the dataset
-file_path = "C:/Users/aniru/Desktop/PythonProj/Imports_Exports_Dataset.csv"  # User-specified file path
-sample_df = pd.read_csv(file_path).sample(n=3001, random_state=55003)
+file_path = "Imports_Exports_Dataset.csv"
+sample_df = pd.read_csv(file_path).sample(n=3001, random_state=55026)
 
 # Set up the Streamlit page configuration
 st.set_page_config(page_title="Imports/Exports Dashboard", layout="wide")
@@ -112,11 +112,11 @@ elif page == "Analysis Dashboard":
         
         # Updating heatmap_data with new values
         heatmap_data = pd.DataFrame({
-            "Clothing": [4927.00, 4994.90, 4982.45],
-            "Electronics": [4971.92, 4984.60, 4990.24],
-            "Furniture": [4965.92, 4928.60, 4993.26],
-            "Machinery": [4994.36, 4998.01, 4994.71],
-            "Toys": [4997.24, 4966.97, 4959.85]
+            "Clothing": [4927.36, 4994.90, 4976.66],
+            "Electronics": [4970.67, 4965.87, 4976.10],
+            "Furniture": [4992.64, 4932.57, 4989.27],
+            "Machinery": [4987.12, 4949.41, 4983.09],
+            "Toys": [4999.93, 4980.94, 4980.31]
         }, index=["Air", "Land", "Sea"])
         
         fig, ax2 = plt.subplots(figsize=(6, 3))
@@ -136,11 +136,12 @@ elif page == "Analysis Dashboard":
     with col8:
         st.subheader("Count of Products by Payment Terms per Category")
         payment_terms_data = pd.DataFrame({
-           "Cash on Delivery": [162, 137, 162, 149, 151],
-            "Net 30": [142, 151, 159, 142, 140],
-            "Net 60": [144, 142, 135, 162, 143],
-            "Prepaid": [148, 148, 159, 162, 163]
+            "Cash on Delivery": [170, 129, 173, 158, 163],
+            "Net 30": [128, 149, 146, 141, 132],
+            "Net 60": [169, 145, 139, 144, 149],
+            "Prepaid": [154, 143, 158, 151, 160]
         }, index=["Clothing", "Electronics", "Furniture", "Machinery", "Toys"])
+
         fig, ax = plt.subplots(figsize=(10, 6))
         payment_terms_data.plot(kind="bar", stacked=True, ax=ax, color=["#339966", "#FFD700", "#3366CC", "#FF6699"] )
         ax.set_title("Product Count by Payment Term per Category (Stacked Bar Chart)")
@@ -154,8 +155,8 @@ elif page == "Analysis Dashboard":
         st.subheader("Category Ranking by Total Economic Impact")
         
         data={
-        "Category": ["Furniture", "Toys", "Clothing", "Machinery", "Electronics"],
-        "Total Economic Impact in $": [3155020.10, 3001177.95, 2996226.27, 2992691.22, 2963909.82]
+        "Category": ["Furniture", "Clothing", "Machinery", "Toys", "Electronics"],
+        "Total Economic Impact in $": [3229667.61, 3046388.62, 2975353.81, 2940417.77, 2847889.43]
         }
 
         economic_impact_data = pd.DataFrame(data)
@@ -174,11 +175,13 @@ elif page == "Analysis Dashboard":
     
     with col10:
         st.subheader("Average Value and Quantity of Top 5 Countries")
+        
         data = {
-        "Country": ["Solomon Islands", "Switzerland", "Palau", "Somalia", "Guadeloupe"],
-        "Avg_Value": [6908.63, 6872.15, 6774.04, 6688.90, 6463.84],
-        "Avg_Quantity": [6367.50, 4426.23, 5343.90, 5449.82, 5405.83]
+        "Country": ["Honduras", "Pitcairn Islands", "Jordan", "Ghana", "Guinea-Bissau"],
+        "Avg_Value": [7390.06, 7226.65, 6968.02, 6806.32, 6790.02],
+        "Avg_Quantity": [5149.25, 4850.78, 2371.00, 4438.45, 4789.83]
         }
+
 
         df = pd.DataFrame(data)
 
@@ -332,4 +335,4 @@ elif page == "Key Observations and Insights":
     """)
 
     # Optional footer for aesthetic purposes or additional information
-st.sidebar.info("Developed by [Anirudh Gupta- 055003]")
+st.sidebar.info("Developed by [Navneet Mittal- 055026]")
